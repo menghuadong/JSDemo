@@ -1,10 +1,15 @@
 <html>
  <head>
 	<title>iRock -The Virtual Pet Rock</title>
+	<script type="text/javascript" src="cookie.js"></script>
 	<script>
 	  var userName;
           function greetUser(){
-			alert('Hello,I am your pet rock!');
+			userName=readCookie("irock_username");
+			if(userName)
+				alert("Hello "+userName+",I missed you so much!");
+			else
+				alert('Hello,I am your pet rock!');
 			}
 	  function resizeRock(){
 			document.getElementById("rockImg").style.height=
@@ -18,6 +23,7 @@
                 userName=prompt("What is your name?","Enter your name here.");
 		if(userName)
 			alert("Nice to meet you "+userName+"!");
+			writeCookie("irock_username",userName,5*365);
                   }                
 	      document.getElementById("rockImg").src="rock_happy.png";                       
               setTimeout("document.getElementById('rockImg').src='rock.png';",1000*60);
